@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <link rel="manifest" href="{{ 'manifest.webmanifest' | url }}">
+  <meta name="theme-color" content="#f4511e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="SAA 复习">
+  <link rel="apple-touch-icon" href="{{ 'assets/apple-touch-icon.svg' | url }}">
+{% endblock %}

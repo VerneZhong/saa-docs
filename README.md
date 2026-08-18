@@ -14,7 +14,25 @@
 - `08-易混淆服务对比.md`：集中区分 Multi-AZ vs Read Replica、SQS vs SNS vs EventBridge、CloudWatch vs CloudTrail vs Config 等高频陷阱。
 - `09-考前90分钟速记.md`：考前最后一轮快速复习，只保留高价值判断规则。
 - `10-日语面试表达-AWS架构.md`：把 AWS 架构知识转成日本求职/面试可用表达。
-- `saa-docs-viewer.html`：本地网页阅读器，支持文档列表、Markdown 渲染和搜索高亮。
+- `11-查漏补缺与边界条件.md`：官方考纲对照、易说过头的口诀边界和最后检查表。
+
+## 手机阅读站
+
+仓库使用 Material for MkDocs 构建 iPhone 优先的复习站，支持全文搜索、深色模式、模拟题答案折叠、阅读位置记忆和离线缓存。合并到 `main` 后由 GitHub Actions 自动发布到：
+
+<https://vernezhong.github.io/saa-docs/>
+
+本地预览：
+
+```bash
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+python scripts/prepare_docs.py
+mkdocs serve
+```
+
+iPhone 使用 Safari 打开网站后，选择“分享 → 添加到主屏幕”。
 
 ## 推荐使用方式
 
