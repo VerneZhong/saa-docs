@@ -28,6 +28,9 @@
 - 想从头建立节奏：[4 周冲刺路线图](01-备考路线图.md)
 - 想系统查一个知识点：[完整考点笔记](06-完整考点笔记.md)
 - 想检查遗漏与容易说错的边界：[查漏补缺与边界条件](11-查漏补缺与边界条件.md)
-- 想准备日本 AWS 面试：[日语架构表达](10-日语面试表达-AWS架构.md)
+- 想从派遣转向更稳定的发展环境：[日本 IT 跳槽定位与路线](12-日本IT跳槽定位与路线.md)
+- 想开始准备材料：[职务经历书与项目盘点](13-职务经历书与项目盘点.md)
+- 想练习日语面试：[日本 IT 面试实战](14-日本IT面试实战.md)
+- 想表达 AWS 架构能力：[AWS 架构日语表达](10-日语面试表达-AWS架构.md)
 
 > 本站不是 AWS 官方资料或题库。考试范围与服务能力更新时，以 [AWS SAA-C03 Exam Guide](https://docs.aws.amazon.com/aws-certification/latest/solutions-architect-associate-03/solutions-architect-associate-03.html) 为准。
