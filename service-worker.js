@@ -1,4 +1,4 @@
-const CACHE_VERSION = "saa-study-v1";
+const CACHE_VERSION = "saa-study-v2";
 const CORE = ["./", "./search/search_index.json", "./manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
@@ -20,7 +20,7 @@ self.addEventListener("fetch", (event) => {
   const requestUrl = new URL(event.request.url);
   if (requestUrl.origin !== self.location.origin) return;
 
-  if (event.request.mode === "navigate") {
+  if (event.request.mode === "navigate" || requestUrl.pathname.endsWith("/search/search_index.json")) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
