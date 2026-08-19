@@ -36,10 +36,136 @@
 .md-typeset .quiz-answer summary { padding: 0.75rem 0.9rem; font-weight: 700; }
 .md-typeset .quiz-answer > :not(summary) { margin-left: 0.9rem; margin-right: 0.9rem; }
 
+.reading-progress {
+  position: fixed;
+  z-index: 20;
+  top: 2.4rem;
+  left: 0;
+  width: 100%;
+  height: 0.18rem;
+  background: var(--md-default-bg-color);
+  background: color-mix(in srgb, var(--md-default-bg-color) 72%, transparent);
+  pointer-events: none;
+}
+
+.reading-progress__bar {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--md-accent-fg-color);
+  transition: transform 80ms linear;
+}
+
+.reading-controls {
+  position: fixed;
+  z-index: 18;
+  right: 0.8rem;
+  bottom: calc(0.8rem + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  padding: 0.22rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 999px;
+  background: var(--md-default-bg-color);
+  background: color-mix(in srgb, var(--md-default-bg-color) 90%, transparent);
+  box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 18%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.reading-controls.is-hidden { opacity: 0; transform: translateY(0.5rem); pointer-events: none; }
+.reading-controls button {
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 0.55rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--md-default-fg-color);
+  font: inherit;
+  font-weight: 700;
+  touch-action: manipulation;
+}
+.reading-controls button:active { background: var(--md-default-fg-color--lightest); }
+.reading-controls__percent {
+  min-width: 2.5rem;
+  padding-right: 0.35rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.62rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.reading-toc { position: fixed; z-index: 30; inset: 0; visibility: hidden; pointer-events: none; }
+.reading-toc.is-open { visibility: visible; pointer-events: auto; }
+.reading-toc__backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: rgb(0 0 0 / 38%);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.reading-toc.is-open .reading-toc__backdrop { opacity: 1; }
+.reading-toc__sheet {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-height: min(72vh, 34rem);
+  padding: 0 1rem calc(1rem + env(safe-area-inset-bottom));
+  border-radius: 1rem 1rem 0 0;
+  background: var(--md-default-bg-color);
+  box-shadow: 0 -0.5rem 2rem rgb(0 0 0 / 18%);
+  transform: translateY(102%);
+  transition: transform 200ms ease;
+}
+.reading-toc.is-open .reading-toc__sheet { transform: translateY(0); }
+.reading-toc__sheet header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0 0.55rem;
+  background: var(--md-default-bg-color);
+}
+.reading-toc__sheet header button {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  font-size: 1.2rem;
+}
+.reading-toc__sheet ol { max-height: calc(min(72vh, 34rem) - 3.8rem); margin: 0; padding: 0; overflow: auto; list-style: none; }
+.reading-toc__sheet li { margin: 0; }
+.reading-toc__sheet li.is-level-3 { padding-left: 1rem; }
+.reading-toc__sheet a { display: block; padding: 0.62rem 0.2rem; border-bottom: 1px solid var(--md-default-fg-color--lightest); color: var(--md-default-fg-color); }
+
 @media (max-width: 44rem) {
   .commute-grid { grid-template-columns: 1fr; }
   .md-typeset { font-size: 0.82rem; line-height: 1.82; }
   .md-typeset h1 { font-size: 1.7rem; }
   .md-typeset table:not([class]) { font-size: 0.68rem; }
   .md-content__inner { padding-top: 0.65rem; }
+  .md-content { padding-bottom: calc(3.8rem + env(safe-area-inset-bottom)); }
+}
+
+@media (min-width: 60rem) {
+  .reading-controls { right: 1.2rem; bottom: 1.2rem; }
+  .reading-controls [data-action="toc"] { display: none; }
+  .reading-toc { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reading-progress__bar,
+  .reading-controls,
+  .reading-toc__backdrop,
+  .reading-toc__sheet { transition: none; }
 }
